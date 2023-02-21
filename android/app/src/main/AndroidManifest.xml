@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:usesCleartextTraffic="true"
     package="com.example.swd_project_clatt">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
    <application
         android:label="swd_project_clatt"
         android:name="${applicationName}"
@@ -23,6 +26,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
