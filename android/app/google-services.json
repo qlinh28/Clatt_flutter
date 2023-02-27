@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "201459656752",
-    "project_id": "cleaninghouseservice-23aa3",
-    "storage_bucket": "cleaninghouseservice-23aa3.appspot.com"
+    "project_number": "81955253683",
+    "project_id": "iclean-project-76967",
+    "storage_bucket": "iclean-project-76967.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:201459656752:android:d5d10d3765e922727fa5f5",
+        "mobilesdk_app_id": "1:81955253683:android:06cf64ce539f48b8332fc6",
         "android_client_info": {
           "package_name": "com.example.swd_project_clatt"
         }
       },
       "oauth_client": [
         {
-          "client_id": "201459656752-h28lmab1bqq0rjhpp3ah76nbla1atulp.apps.googleusercontent.com",
+          "client_id": "81955253683-3c051cqia61uuoodrrina8a8c37u10ga.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDp8qEE0fo8Koaab-G9lJ5OcyVfUXnu-sk"
+          "current_key": "AIzaSyBU9NaDKbxfPTEj9QLwhkf8QfoL2FsLoos"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "201459656752-4bophf04lnn1dnmu89eajt5g7vvcfm20.apps.googleusercontent.com",
+              "client_id": "81955253683-3c051cqia61uuoodrrina8a8c37u10ga.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "81955253683-t5s83amg9fcd6ep8cn8iq44plq3c8d3g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.swdProjectClatt"
+              }
             }
           ]
         }

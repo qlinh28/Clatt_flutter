@@ -23,7 +23,7 @@ class LocalNotification {
     final NotificationDetails notiDetails = NotificationDetails(
       android: AndroidNotificationDetails(
         'com.example.swd_project_clatt',
-        'Clatt',
+        'clatt project',
         importance: Importance.max,
         priority: Priority.high,
       ),
