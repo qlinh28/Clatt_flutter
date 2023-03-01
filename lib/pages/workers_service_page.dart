@@ -55,7 +55,10 @@ class WorkerServiceScreen extends StatelessWidget {
                 child: const Icon(Icons.arrow_back),
               ),
               const SizedBox(width: 15),
-              Text(service.name),
+              Text(
+                service.name,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
             ],
           ),
           const SizedBox(height: 10),

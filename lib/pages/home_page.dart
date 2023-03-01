@@ -31,8 +31,6 @@ class HomePage extends StatelessWidget {
     ),
   ];
 
-  HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,19 +51,39 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Hello, how are you today?",
-                        style: const TextStyle(
-                          fontSize: 15,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            "Hello, ",
+                            style: const TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            "Linh",
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 4),
-                      Text(
-                        "Linh",
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_on_sharp,
+                            color: Colors.deepPurple.shade300,
+                            size: 16,
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            "S102 Vinhomes Grand Park",
+                            style: const TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
