@@ -7,6 +7,8 @@ class BannerSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ImageSlideshow(
+      autoPlayInterval: 3000,
+      isLoop: true,
       children: [
         Padding(
           padding: EdgeInsets.all(8),

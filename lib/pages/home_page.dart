@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swd_project_clatt/components/home/banner_slider.dart';
 import 'package:swd_project_clatt/models/services.dart';
+import 'package:swd_project_clatt/pages/workers_service_page.dart';
 
 class HomePage extends StatelessWidget {
   List<Service> services = [
@@ -71,6 +72,16 @@ class HomePage extends StatelessWidget {
                 )
               ],
             ),
+            const SizedBox(height: 20),
+            Text(
+              "What's news?",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+            const SizedBox(height: 5),
+            Center(child: BannerSlider()),
             const SizedBox(height: 10),
             Padding(
               padding: EdgeInsets.only(top: 10),
@@ -95,7 +106,6 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            Center(child: BannerSlider()),
             GridView.count(
               crossAxisCount: 3,
               physics: const NeverScrollableScrollPhysics(),
@@ -106,7 +116,13 @@ class HomePage extends StatelessWidget {
                   Container(
                     child: Column(children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => WorkerServiceScreen(
+                                      service: services[i])));
+                        },
                         child: Container(
                           margin: const EdgeInsets.all(10),
                           child: Image.asset(
@@ -119,12 +135,12 @@ class HomePage extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                        services[i].name,
-                        style: const TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
+                          services[i].name,
+                          style: const TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
                       )
                     ]),
                   ),
