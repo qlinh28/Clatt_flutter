@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:swd_project_clatt/worker/components/my_booking/cancelled_card.dart';
+import 'package:swd_project_clatt/worker/components/my_booking/completed_card.dart';
+import 'package:swd_project_clatt/worker/components/my_booking/pending_card.dart';
 import 'package:swd_project_clatt/worker/components/my_booking/upcoming_card.dart';
 
 class MyBookingsScreen extends StatefulWidget {
@@ -60,16 +63,10 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
               const SizedBox(height: 10),
               Container(
                   child: [
-                Container(
-                  color: Colors.blue,
-                ),
+                PendingCard(),
                 UpcomingCard(),
-                Container(
-                  color: Colors.green,
-                ),
-                Container(
-                  color: Colors.blue,
-                ),
+                CompletedCard(),
+                CancelledCard(),
               ][_tabController.index])
             ],
           ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class UpcomingCard extends StatefulWidget {
-  const UpcomingCard({super.key});
+class CompletedCard extends StatefulWidget {
+  const CompletedCard({super.key});
 
   @override
-  State<UpcomingCard> createState() => _UpcomingCardState();
+  State<CompletedCard> createState() => _CompletedCardState();
 }
 
-class _UpcomingCardState extends State<UpcomingCard> {
+class _CompletedCardState extends State<CompletedCard> {
   bool _isExpanded = false;
 
   @override
@@ -21,7 +21,7 @@ class _UpcomingCardState extends State<UpcomingCard> {
       child: Container(
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
-          height: _isExpanded ? 250 : 165,
+          height: _isExpanded ? 212 : 165,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: Colors.grey.shade200,
@@ -72,11 +72,11 @@ class _UpcomingCardState extends State<UpcomingCard> {
                             Container(
                               padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                               decoration: BoxDecoration(
-                                color: Colors.deepPurple.shade300,
+                                color: Colors.greenAccent.shade200,
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Text(
-                                "Upcoming",
+                                "Completed",
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 13,
@@ -141,29 +141,6 @@ class _UpcomingCardState extends State<UpcomingCard> {
                             ),
                           ),
                         ],
-                      ),
-                      const SizedBox(height: 10),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          width: MediaQuery.of(context).size.width / 2.7,
-                          height: MediaQuery.of(context).size.height / 25,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            border: Border.all(
-                                color: Colors.deepPurple.shade300, width: 2),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Cancel booking",
-                              style: TextStyle(
-                                  color: Colors.deepPurple.shade300,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 1),
-                            ),
-                          ),
-                        ),
                       ),
                     ],
                   ),

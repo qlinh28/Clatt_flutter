@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class UpcomingCard extends StatefulWidget {
-  const UpcomingCard({super.key});
+class PendingCard extends StatefulWidget {
+  const PendingCard({super.key});
 
   @override
-  State<UpcomingCard> createState() => _UpcomingCardState();
+  State<PendingCard> createState() => _PendingCardState();
 }
 
-class _UpcomingCardState extends State<UpcomingCard> {
+class _PendingCardState extends State<PendingCard> {
   bool _isExpanded = false;
 
   @override
@@ -76,7 +76,7 @@ class _UpcomingCardState extends State<UpcomingCard> {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Text(
-                                "Upcoming",
+                                "Pending",
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 13,
@@ -143,27 +143,54 @@ class _UpcomingCardState extends State<UpcomingCard> {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          width: MediaQuery.of(context).size.width / 2.7,
-                          height: MediaQuery.of(context).size.height / 25,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            border: Border.all(
-                                color: Colors.deepPurple.shade300, width: 2),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Cancel booking",
-                              style: TextStyle(
-                                  color: Colors.deepPurple.shade300,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 1),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: () {},
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 2.6,
+                              height: MediaQuery.of(context).size.height / 25,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                border: Border.all(
+                                    color: Colors.deepPurple.shade300,
+                                    width: 2),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Reject order",
+                                  style: TextStyle(
+                                      color: Colors.deepPurple.shade300,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 1),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          InkWell(
+                            onTap: () {},
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 2.6,
+                              height: MediaQuery.of(context).size.height / 25,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: Colors.deepPurple.shade300,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Accept order",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 1),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

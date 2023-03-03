@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:swd_project_clatt/user/components/my_booking/cancelled_card.dart';
+import 'package:swd_project_clatt/user/components/my_booking/completed_card.dart';
+import 'package:swd_project_clatt/user/components/my_booking/pending_card.dart';
+import 'package:swd_project_clatt/user/components/my_booking/upcoming_card.dart';
 
 class MyBookingsScreen extends StatefulWidget {
   const MyBookingsScreen({super.key});
@@ -13,7 +17,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
+    _tabController = TabController(length: 4, vsync: this, initialIndex: 0);
     _tabController.addListener((_handleTabSelection));
     super.initState();
   }
@@ -44,28 +48,24 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
               ),
               TabBar(
                   controller: _tabController,
+                  isScrollable: true,
                   unselectedLabelColor: Colors.grey,
                   labelColor: Colors.deepPurple.shade300,
                   indicator: UnderlineTabIndicator(
-                    borderSide: BorderSide(width: 2,
-                    color: Colors.deepPurple.shade300)
-                  ),
+                      borderSide: BorderSide(
+                          width: 2, color: Colors.deepPurple.shade300)),
                   tabs: [
+                    Tab(text: 'Pending'),
                     Tab(text: 'Upcoming'),
                     Tab(text: 'Completed'),
                     Tab(text: 'Cancelled'),
                   ]),
               Container(
                   child: [
-                Container(
-                  color: Colors.red,
-                ),
-                Container(
-                  color: Colors.green,
-                ),
-                Container(
-                  color: Colors.blue,
-                ),
+                PendingCard(),
+                UpcomingCard(),
+                CompletedCard(),
+                CancelledCard(),
               ][_tabController.index])
             ],
           ),
