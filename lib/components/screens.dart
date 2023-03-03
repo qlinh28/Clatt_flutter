@@ -2,6 +2,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:swd_project_clatt/pages/home_page.dart';
+import 'package:swd_project_clatt/pages/my_bookings_page.dart';
+import 'package:swd_project_clatt/pages/notification_page.dart';
+import 'package:swd_project_clatt/pages/profile_page.dart';
 
 
 class Screens extends StatefulWidget {
@@ -17,9 +20,9 @@ class _ScreensState extends State<Screens> {
 
   static final List<Widget> _screenOptions = <Widget>[
     HomePage(),
-    HomePage(),
-    HomePage(),
-    HomePage(),
+    MyBookingsScreen(),
+    NotificationScreen(),
+    ProfileScreen(),
   ];
 
   @override
