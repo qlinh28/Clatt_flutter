@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:swd_project_clatt/components/worker_details/review_card.dart';
+import 'package:swd_project_clatt/user/components/worker_details/review_card.dart';
 import 'package:swd_project_clatt/models/workers.dart';
-import 'package:swd_project_clatt/pages/booking_details_page.dart';
+import 'package:swd_project_clatt/user/pages/booking_details_page.dart';
 
 class WorkerDetailsScreen extends StatefulWidget {
   final Worker worker;

@@ -1,57 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:swd_project_clatt/components/login_signup/my_button.dart';
-import 'package:swd_project_clatt/components/login_signup/my_textfield.dart';
-import 'package:swd_project_clatt/components/login_signup/square_tile.dart';
-import 'package:swd_project_clatt/pages/sign_up_page.dart';
+import 'package:swd_project_clatt/user/components/login_signup/my_button.dart';
+import 'package:swd_project_clatt/user/components/login_signup/my_textfield.dart';
+import 'package:swd_project_clatt/user/components/login_signup/square_tile.dart';
 
+class SignUpPage extends StatelessWidget {
+  SignUpPage({super.key});
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
-
-  //text editing
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  final repasswordController = TextEditingController();
+  final fullnameController = TextEditingController();
+  final emailController = TextEditingController();
 
-  //sign user
-  void signUserIn() {}
+  void signUpUser() {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[300],
         resizeToAvoidBottomInset: false,
-        body: Container(
-          padding: const EdgeInsets.fromLTRB(45, 0, 45, 0),
-          child: SafeArea(
-              child: Center(
+        body: SafeArea(
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(45, 10, 45, 0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Create an account',
+                      style: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
 
-                //logo
-                Image.asset(
-                  'lib/images/logo.png',
-                  height: 200,
+                const SizedBox(height: 5),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Let\'s create your account',
+                      style: TextStyle(
+                        color: Colors.grey[500],
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
                 ),
 
                 const SizedBox(height: 10),
 
-                Text(
-                  'Welcome back you\'ve been missed!',
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 16,
-                  ),
-                ),
-
-                const SizedBox(height: 20),
-
-                //username textfield
+                //username texfield
                 MyTextField(
                     controller: usernameController,
                     labelText: 'Username',
-                    hintText: 'Username',
+                    hintText: 'Enter your username',
                     obscureText: false),
 
                 const SizedBox(height: 10),
@@ -60,30 +67,41 @@ class LoginPage extends StatelessWidget {
                 MyTextField(
                     controller: passwordController,
                     labelText: 'Password',
-                    hintText: 'Password',
+                    hintText: 'Enter your password',
                     obscureText: true),
 
                 const SizedBox(height: 10),
 
-                //Forgot password
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.grey[600]),
-                      ),
-                    ],
-                  ),
-                ),
+                //re-password texfield
+                MyTextField(
+                    controller: repasswordController,
+                    labelText: 'Re-password',
+                    hintText: 'Enter your re-password',
+                    obscureText: true),
+
+                const SizedBox(height: 10),
+
+                //fullname textfield
+                MyTextField(
+                    controller: fullnameController,
+                    labelText: 'Fullname',
+                    hintText: 'Enter your full name',
+                    obscureText: false),
+
+                const SizedBox(height: 10),
+
+                //email textfield
+                MyTextField(
+                    controller: emailController,
+                    labelText: 'Email',
+                    hintText: 'Enter your email address',
+                    obscureText: false),
 
                 const SizedBox(height: 10),
 
                 MyButton(
-                  text: "Sign in",
-                  onTap: signUserIn,
+                  text: "Sign up",
+                  onTap: signUpUser,
                 ),
 
                 const SizedBox(height: 15),
@@ -127,20 +145,20 @@ class LoginPage extends StatelessWidget {
                     children: [
                       const SquareTile(imagePath: 'lib/images/google.png'),
                       Text(
-                        'Login with Google',
+                        'Sign up with Google',
                         style: TextStyle(color: Colors.grey[700]),
                       ),
                     ],
                   ),
                 ),
 
-                const SizedBox(height: 5),
+                const SizedBox(height: 10),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Not a member?',
+                      'Already a member?',
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                     TextButton(
@@ -148,18 +166,15 @@ class LoginPage extends StatelessWidget {
                           textStyle:
                               const TextStyle(fontWeight: FontWeight.bold)),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUpPage()),
-                        );
+                        Navigator.pop(context);
                       },
-                      child: const Text('Register now'),
+                      child: const Text('Login'),
                     ),
                   ],
                 )
               ],
             ),
-          )),
+          ),
         ));
   }
 }

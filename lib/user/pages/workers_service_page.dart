@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swd_project_clatt/models/services.dart';
 import 'package:swd_project_clatt/models/workers.dart';
-import 'package:swd_project_clatt/pages/worker_details.dart';
+import 'package:swd_project_clatt/user/pages/worker_details.dart';
 
 class WorkerServiceScreen extends StatelessWidget {
   final Service service;

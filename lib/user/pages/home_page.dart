@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:swd_project_clatt/components/home/banner_slider.dart';
+import 'package:swd_project_clatt/user/components/home/banner_slider.dart';
 import 'package:swd_project_clatt/models/services.dart';
-import 'package:swd_project_clatt/pages/workers_service_page.dart';
+import 'package:swd_project_clatt/user/pages/workers_service_page.dart';
 
 class HomePage extends StatelessWidget {
   List<Service> services = [
