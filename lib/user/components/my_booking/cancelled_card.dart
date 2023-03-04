@@ -142,11 +142,11 @@ class _CancelledCardState extends State<CancelledCard> {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 4),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 4),
               Icon(_isExpanded
                   ? Icons.keyboard_arrow_up
                   : Icons.keyboard_arrow_down)

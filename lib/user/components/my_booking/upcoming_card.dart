@@ -21,7 +21,7 @@ class _UpcomingCardState extends State<UpcomingCard> {
       child: Container(
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
-          height: _isExpanded ? 250 : 165,
+          height: _isExpanded ? 258 : 165,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: Colors.grey.shade200,
@@ -103,7 +103,6 @@ class _UpcomingCardState extends State<UpcomingCard> {
                 child: Container(
                   padding: EdgeInsets.only(left: 15, right: 15, top: 3),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -146,8 +145,8 @@ class _UpcomingCardState extends State<UpcomingCard> {
                       InkWell(
                         onTap: () {},
                         child: Container(
-                          width: MediaQuery.of(context).size.width / 2.7,
-                          height: MediaQuery.of(context).size.height / 25,
+                          width: MediaQuery.of(context).size.width / 1.5,
+                          height: MediaQuery.of(context).size.height / 20,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             border: Border.all(
@@ -165,11 +164,11 @@ class _UpcomingCardState extends State<UpcomingCard> {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 5),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 4),
               Icon(_isExpanded
                   ? Icons.keyboard_arrow_up
                   : Icons.keyboard_arrow_down)

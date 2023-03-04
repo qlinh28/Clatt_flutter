@@ -21,7 +21,7 @@ class _PendingCardState extends State<PendingCard> {
       child: Container(
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
-          height: _isExpanded ? 258 : 165,
+          height: _isExpanded ? 302 : 165,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: Colors.grey.shade200,
@@ -103,7 +103,6 @@ class _PendingCardState extends State<PendingCard> {
                 child: Container(
                   padding: EdgeInsets.only(left: 15, right: 15, top: 3),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -154,11 +153,34 @@ class _PendingCardState extends State<PendingCard> {
                           textAlign: TextAlign.center,
                         ),
                       ),
+                      const SizedBox(height: 10),
+                      InkWell(
+                        onTap: () {},
+                        child: Container(
+                          width: MediaQuery.of(context).size.width / 1.5,
+                          height: MediaQuery.of(context).size.height / 20,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            border: Border.all(
+                                color: Colors.deepPurple.shade300, width: 2),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Cancel booking",
+                              style: TextStyle(
+                                  color: Colors.deepPurple.shade300,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 4),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 4),
               Icon(_isExpanded
                   ? Icons.keyboard_arrow_up
                   : Icons.keyboard_arrow_down)

@@ -21,7 +21,7 @@ class _PendingCardState extends State<PendingCard> {
       child: Container(
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
-          height: _isExpanded ? 250 : 165,
+          height: _isExpanded ? 245 : 165,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: Colors.grey.shade200,
@@ -190,13 +190,13 @@ class _PendingCardState extends State<PendingCard> {
                               ),
                             ),
                           ),
+                          const SizedBox(height: 5),
                         ],
                       ),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 4),
               Icon(_isExpanded
                   ? Icons.keyboard_arrow_up
                   : Icons.keyboard_arrow_down)

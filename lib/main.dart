@@ -2,7 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:swd_project_clatt/Notification.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:swd_project_clatt/user/components/screens.dart';
+import 'package:swd_project_clatt/worker/components/screens.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
