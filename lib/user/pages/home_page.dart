@@ -1,35 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:swd_project_clatt/services/list_services_api.dart';
 import 'package:swd_project_clatt/user/components/home/banner_slider.dart';
 import 'package:swd_project_clatt/models/services.dart';
 import 'package:swd_project_clatt/user/pages/workers_service_page.dart';
 
-class HomePage extends StatelessWidget {
-  List<Service> services = [
-    Service(
-      name: "Tham Cleaning",
-      icon: "assets/images/lisa_avatar.jpg",
-    ),
-    Service(
-      name: "123 Cleaning",
-      icon: "assets/images/lisa_avatar.jpg",
-    ),
-    Service(
-      name: "456 Cleaning",
-      icon: "assets/images/lisa_avatar.jpg",
-    ),
-    Service(
-      name: "789 Cleaning",
-      icon: "assets/images/lisa_avatar.jpg",
-    ),
-    Service(
-      name: "JQK Cleaning",
-      icon: "assets/images/lisa_avatar.jpg",
-    ),
-    Service(
-      name: "Cleaning",
-      icon: "assets/images/lisa_avatar.jpg",
-    ),
-  ];
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Service> services = [];
+
+  @override
+  void initState() {
+    super.initState;
+    fetchServices();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +132,7 @@ class HomePage extends StatelessWidget {
                         },
                         child: Container(
                           margin: const EdgeInsets.all(10),
-                          child: Image.asset(
+                          child: Image.network(
                             services[i].icon,
                             width: 100,
                             height: 60,
@@ -168,5 +157,12 @@ class HomePage extends StatelessWidget {
         ),
       )),
     );
+  }
+
+  Future<void> fetchServices() async {
+    final listServices = await ServicesApi.fetchServices();
+    setState(() {
+      services = listServices;
+    });
   }
 }

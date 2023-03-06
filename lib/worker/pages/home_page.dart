@@ -6,28 +6,40 @@ import 'package:swd_project_clatt/user/pages/workers_service_page.dart';
 class HomePage extends StatelessWidget {
   List<Service> services = [
     Service(
+      id: 1,
       name: "Tham Cleaning",
       icon: "assets/images/lisa_avatar.jpg",
+      price: 400,
     ),
     Service(
+      id: 2,
       name: "123 Cleaning",
       icon: "assets/images/lisa_avatar.jpg",
+      price: 400,
     ),
     Service(
+      id: 3,
       name: "456 Cleaning",
       icon: "assets/images/lisa_avatar.jpg",
+      price: 400,
     ),
     Service(
+      id: 4,
       name: "789 Cleaning",
       icon: "assets/images/lisa_avatar.jpg",
+      price: 400,
     ),
     Service(
+      id: 5,
       name: "JQK Cleaning",
       icon: "assets/images/lisa_avatar.jpg",
+      price: 400,
     ),
     Service(
+      id: 6,
       name: "Cleaning",
       icon: "assets/images/lisa_avatar.jpg",
+      price: 400,
     ),
   ];
 
