@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swd_project_clatt/models/workers.dart';
+import 'package:swd_project_clatt/services/create_booking_api.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class BookingDetailsScreen extends StatefulWidget {
@@ -33,6 +34,25 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
       setState(() {
         _counter--;
       });
+    }
+  }
+
+  Future<void> _createBookingOrder() async {
+    // Make the API call using the http package
+    final response = await BookingApi.fetchWorkerByService(2, widget.worker.id,
+        1, 1, today.toIso8601String(), "unconfirmed", "aki", _counter);
+
+    // Check if the API call was successful
+    if (response == 202) {
+      // Booking order was created successfully, show a success message to the user
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Booking order created successfully!')),
+      );
+    } else {
+      // Booking order creation failed, show an error message to the user
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to create booking order')),
+      );
     }
   }
 
@@ -250,7 +270,7 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
               ),
               const SizedBox(height: 5),
               InkWell(
-                onTap: () {},
+                onTap: _createBookingOrder,
                 child: Container(
                   width: MediaQuery.of(context).size.width / 1.2,
                   height: MediaQuery.of(context).size.height / 14,
