@@ -1,42 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:swd_project_clatt/models/services.dart';
 import 'package:swd_project_clatt/models/workers.dart';
+import 'package:swd_project_clatt/services/list_worker_api.dart';
+import 'package:swd_project_clatt/models/services.dart';
 import 'package:swd_project_clatt/user/pages/worker_details.dart';
 
-class WorkerServiceScreen extends StatelessWidget {
+class WorkerServiceScreen extends StatefulWidget {
   final Service service;
-  WorkerServiceScreen({super.key, required this.service});
+  const WorkerServiceScreen({super.key, required this.service});
 
-  List<Worker> workers = [
-    Worker(
-        name: "Linh1",
-        image: "assets/images/lisa_avatar.jpg",
-        address: "s102 vinhomes",
-        introduce:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        price: 20),
-    Worker(
-        name: "Linh2",
-        image: "assets/images/lisa_avatar.jpg",
-        address: "s102 vinhomes",
-        introduce:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        price: 20),
-    Worker(
-        name: "Linh3",
-        image: "assets/images/lisa_avatar.jpg",
-        address: "s102 vinhomes",
-        introduce:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        price: 20),
-    Worker(
-        name: "Linh4",
-        image: "assets/images/lisa_avatar.jpg",
-        address: "s102 vinhomes",
-        introduce:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        price: 20),
-  ];
+  @override
+  State<WorkerServiceScreen> createState() => _WorkerServiceScreenState();
+}
+
+class _WorkerServiceScreenState extends State<WorkerServiceScreen> {
+  List<Worker> worker = [];
+
+  @override
+  void initState() {
+    super.initState;
+    fetchWorker(widget.service.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,13 +39,13 @@ class WorkerServiceScreen extends StatelessWidget {
               ),
               const SizedBox(width: 15),
               Text(
-                service.name,
+                widget.service.name,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ],
           ),
           const SizedBox(height: 10),
-          for (int i = 0; i < workers.length; i++)
+          for (int i = 0; i < worker.length; i++)
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Container(
@@ -79,7 +62,7 @@ class WorkerServiceScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                WorkerDetailsScreen(worker: workers[i])));
+                                WorkerDetailsScreen(worker: worker[i])));
                   },
                   child: Row(
                     children: [
@@ -91,8 +74,8 @@ class WorkerServiceScreen extends StatelessWidget {
                           color: Colors.grey.shade400,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Image.asset(
-                          workers[i].image,
+                        child: Image.network(
+                          worker[i].image,
                           width: 70,
                           height: 70,
                           fit: BoxFit.contain,
@@ -108,7 +91,7 @@ class WorkerServiceScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                workers[i].name,
+                                worker[i].name,
                                 style: const TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
@@ -116,7 +99,7 @@ class WorkerServiceScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                "\$${workers[i].price}",
+                                "\$${worker[i].price}",
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
@@ -169,5 +152,12 @@ class WorkerServiceScreen extends StatelessWidget {
         ]),
       ),
     )));
+  }
+
+  Future<void> fetchWorker(int id) async {
+    final listWorkers = await WorkerAPI.fetchWorkerByService(id);
+    setState(() {
+      worker = listWorkers;
+    });
   }
 }

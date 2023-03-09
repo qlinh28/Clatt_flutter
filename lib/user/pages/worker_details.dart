@@ -52,7 +52,7 @@ class _WorkerDetailsScreenState extends State<WorkerDetailsScreen>
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      Image.asset(
+                      Image.network(
                         widget.worker.image,
                         width: 170,
                         height: 170,
@@ -106,7 +106,7 @@ class _WorkerDetailsScreenState extends State<WorkerDetailsScreen>
                                   ),
                                   SizedBox(width: 5),
                                   Text(
-                                    "Tham Cleaning",
+                                    widget.worker.name,
                                     style: TextStyle(
                                       fontSize: 12,
                                     ),
@@ -123,7 +123,7 @@ class _WorkerDetailsScreenState extends State<WorkerDetailsScreen>
                                   ),
                                   SizedBox(width: 5),
                                   Text(
-                                    "S102 Vinhomes",
+                                    widget.worker.address,
                                     style: TextStyle(
                                       fontSize: 12,
                                     ),
