@@ -1,18 +1,21 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:swd_project_clatt/common/constants.dart';
+import 'package:flutter/material.dart';
 
-Future<void> loginUser(String username, String password) async {
-  final response = await http.post(
-    Uri.parse('$BASE_URL/login'),
-    headers: {'Content-Type': 'application/json'},
-    body: json.encode({'username': username, 'password': password}),
-  );
+class Auth with ChangeNotifier {
+  bool _isLoggedIn = false;
+  String _token = '';
 
-  if (response.statusCode == 202) {
-    // Login successful, do something
-    print("login success");
-  } else {
-    print("fail");
+  bool get isLoggedIn => _isLoggedIn;
+
+  set isLoggedIn(bool value) {
+    _isLoggedIn = value;
+    notifyListeners();
+  }
+
+  String get token => _token;
+
+  setToken(String token) {
+    _token = token;
+    _isLoggedIn = true;
+    notifyListeners();
   }
 }

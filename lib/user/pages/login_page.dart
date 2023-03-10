@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:swd_project_clatt/common/constants.dart';
+import 'package:http/http.dart' as http;
 import 'package:swd_project_clatt/services/login_api.dart';
-import 'package:swd_project_clatt/user/components/login_signup/my_button.dart';
 import 'package:swd_project_clatt/user/components/login_signup/my_textfield.dart';
 import 'package:swd_project_clatt/user/components/login_signup/square_tile.dart';
 import 'package:swd_project_clatt/user/pages/sign_up_page.dart';
@@ -19,15 +23,36 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   //sign user
-  void _submit() {
-    if (_formKey.currentState!.validate()) {
-      String username = _usernameController.text.trim();
-      String password = _passwordController.text.trim();
-      try {
-        loginUser(username, password);
-      } catch (e) {
-        // Handle the failed login response
-      }
+  Future<void> _handleLogin(
+      BuildContext context, String username, String password) async {
+    // Call an authentication API using the http package
+    final response = await http.post(
+      Uri.parse('$BASE_URL/login'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'username': username, 'password': password}),
+    );
+    if (response.statusCode == 202) {
+      final Map<String, dynamic> responseData =
+          json.decode(response.body.toString());
+      final data = responseData['data'];
+      final token = data['accessToken'];
+      Provider.of<Auth>(context, listen: false).setToken(token);
+      Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      // Display an error message if the login is unsuccessful
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Error'),
+          content: Text('Invalid username or password'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
     }
   }
 
@@ -103,9 +128,21 @@ class _LoginPageState extends State<LoginPage> {
 
                           const SizedBox(height: 10),
 
-                          MyButton(
-                            text: "Sign in",
-                            onTap: _submit,
+                          // MyButton(
+                          //   text: "Sign in",
+                          //   onTap: _submit,
+                          // ),
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _handleLogin(
+                                  context,
+                                  _usernameController.text,
+                                  _passwordController.text,
+                                );
+                              }
+                            },
+                            child: Text('Login'),
                           ),
                         ],
                       )),
