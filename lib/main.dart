@@ -2,7 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:swd_project_clatt/Notification.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:swd_project_clatt/user/components/screens.dart';
+import 'package:swd_project_clatt/user/pages/login_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,9 +36,9 @@ class MyHomePage extends StatelessWidget {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       LocalNotification.showNotification(message);
     });
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Screens(),
+      home: LoginPage(),
     );
   }
 }

@@ -48,7 +48,7 @@ class _UpcomingCardState extends State<UpcomingCard> {
                   Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 15, top: 30),
+                        margin: const EdgeInsets.only(left: 15, top: 15),
                         child: Row(
                           children: [
                             Container(

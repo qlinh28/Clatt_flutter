@@ -5,6 +5,7 @@ class MyTextField extends StatelessWidget {
   final String hintText;
   final String labelText;
   final bool obscureText;
+  final String text;
 
   const MyTextField({
     super.key,
@@ -12,14 +13,21 @@ class MyTextField extends StatelessWidget {
     required this.hintText,
     required this.labelText,
     required this.obscureText,
+    required this.text,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: TextField(
+      child: TextFormField(
         controller: controller,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter your $text';
+          }
+          return null;
+        },
         obscureText: obscureText,
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(

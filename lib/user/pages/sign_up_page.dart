@@ -59,6 +59,7 @@ class SignUpPage extends StatelessWidget {
                     controller: usernameController,
                     labelText: 'Username',
                     hintText: 'Enter your username',
+                    text: 'Username',
                     obscureText: false),
 
                 const SizedBox(height: 10),
@@ -68,6 +69,7 @@ class SignUpPage extends StatelessWidget {
                     controller: passwordController,
                     labelText: 'Password',
                     hintText: 'Enter your password',
+                    text: 'Password',
                     obscureText: true),
 
                 const SizedBox(height: 10),
@@ -77,6 +79,7 @@ class SignUpPage extends StatelessWidget {
                     controller: repasswordController,
                     labelText: 'Re-password',
                     hintText: 'Enter your re-password',
+                    text: 'Re-password',
                     obscureText: true),
 
                 const SizedBox(height: 10),
@@ -86,6 +89,7 @@ class SignUpPage extends StatelessWidget {
                     controller: fullnameController,
                     labelText: 'Fullname',
                     hintText: 'Enter your full name',
+                    text: 'full name',
                     obscureText: false),
 
                 const SizedBox(height: 10),
@@ -95,6 +99,7 @@ class SignUpPage extends StatelessWidget {
                     controller: emailController,
                     labelText: 'Email',
                     hintText: 'Enter your email address',
+                    text: 'email',
                     obscureText: false),
 
                 const SizedBox(height: 10),

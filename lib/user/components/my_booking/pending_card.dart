@@ -37,7 +37,7 @@ class _PendingCardState extends State<PendingCard> {
       child: Container(
           child: Container(
               margin: const EdgeInsets.symmetric(vertical: 8),
-              height: _isExpanded ? 302 : 165,
+              height: _isExpanded ? 305 : 165,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Colors.grey.shade200,
@@ -48,7 +48,7 @@ class _PendingCardState extends State<PendingCard> {
                   Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 15, top: 30),
+                        margin: const EdgeInsets.only(left: 15, top: 15),
                         child: Row(
                           children: [
                             Container(
