@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.grey[300],
         body: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.fromLTRB(45, 0, 45, 0),
+            padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
             child: SafeArea(
                 child: Center(
               child: Column(
@@ -72,8 +72,8 @@ class _LoginPageState extends State<LoginPage> {
 
                   //logo
                   Image.asset(
-                    'assets/images/logo.png',
-                    height: 200,
+                    'assets/images/iClean.png',
+                    height: 250,
                   ),
 
                   const SizedBox(height: 10),
@@ -133,6 +133,13 @@ class _LoginPageState extends State<LoginPage> {
                           //   onTap: _submit,
                           // ),
                           ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              elevation: 6,
+                              backgroundColor: Colors.deepPurple.shade300,
+                              padding: const EdgeInsets.fromLTRB(130,20,130,20),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 _handleLogin(

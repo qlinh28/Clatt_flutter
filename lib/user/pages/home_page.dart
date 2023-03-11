@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:swd_project_clatt/services/list_services_api.dart';
@@ -15,11 +16,46 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Service> services = [];
+  String? mtoken = " ";
 
   @override
   void initState() {
-    super.initState;
+    super.initState();
+    requestPermission();
+    getToken();
     fetchServices();
+  }
+
+  void requestPermission() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+    NotificationSettings settings = await messaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
+
+    print('User granted permission: ${settings.authorizationStatus}');
+  }
+
+  void getToken() async {
+    await FirebaseMessaging.instance.getToken().then((token) {
+      setState(() {
+        mtoken = token;
+        print("My token is $mtoken");
+      });
+    });
+  }
+
+  Future<void> fetchServices() async {
+    final listServices = await ServicesApi.fetchServices();
+    setState(() {
+      services = listServices;
+    });
   }
 
   @override
@@ -85,23 +121,23 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                           const SizedBox(height: 4),
-                          Row(
-                            children: [
-                              Text(
-                                "Token: ",
-                                style: const TextStyle(
-                                  fontSize: 15,
-                                ),
-                              ),
-                              Text(
-                                token,
-                                style: const TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   children: [
+                          //     Text(
+                          //       "Token: ",
+                          //       style: const TextStyle(
+                          //         fontSize: 15,
+                          //       ),
+                          //     ),
+                          //     Text(
+                          //       token,
+                          //       style: const TextStyle(
+                          //         fontSize: 15,
+                          //         fontWeight: FontWeight.bold,
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
                     )
@@ -189,10 +225,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Future<void> fetchServices() async {
-    final listServices = await ServicesApi.fetchServices();
-    setState(() {
-      services = listServices;
-    });
-  }
+  
 }
