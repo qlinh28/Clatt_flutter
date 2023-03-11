@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
       final data = responseData['data'];
       final token = data['accessToken'];
       Provider.of<Auth>(context, listen: false).setToken(token);
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/screen');
     } else {
       // Display an error message if the login is unsuccessful
       showDialog(

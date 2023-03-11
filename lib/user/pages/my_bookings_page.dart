@@ -62,8 +62,8 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
                   ]),
               Container(
                   child: [
-                PendingCard(status: 'done', userId: 1),
-                UpcomingCard(status: 'done', userId: 1),
+                PendingCard(status: 'unconfirm', userId: 1),
+                UpcomingCard(status: 'unconfirm', userId: 1),
                 CompletedCard(status: 'done', userId: 1),
                 CancelledCard(status: 'done', userId: 1),
               ][_tabController.index])

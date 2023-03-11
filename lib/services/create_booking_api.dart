@@ -16,7 +16,7 @@ class BookingApi {
       String desciption,
       int workTime) async {
     final url =
-        '$BASE_URL/booking/create-booking?userId=$userId&employeeId=$empId&jobId=$jobId&timestamp=$timestamp&address_id=$address_id&status=$status&description=$desciption&workTime=$workTime';
+        '$BASE_URL/booking/create-booking?userId=2&employeeId=2&jobId=1&timestamp=$timestamp&address_id=$address_id&status=unconfirm&description=$desciption&workTime=$workTime';
     final uri = Uri.parse(url);
     final response = await http.post(uri);
     final body = response.statusCode;

@@ -13,7 +13,7 @@ class CancelledCard extends StatefulWidget {
 }
 
 class _CancelledCardState extends State<CancelledCard> {
-  bool _isExpanded = false;
+  late List<bool> _isExpanded = List.filled(bookings.length, false);
   List<Bookings> bookings = [];
 
   @override
@@ -24,25 +24,27 @@ class _CancelledCardState extends State<CancelledCard> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _isExpanded = !_isExpanded;
-        });
-      },
-      child: Container(
-        child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 8),
-          height: _isExpanded ? 212 : 165,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: Colors.grey.shade200,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Column(
-            children: [
-              for (int i = 0; i < bookings.length; i++)
-                Column(children: [
+    return ListView(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      children: [
+        for (int i = 0; i < bookings.length; i++)
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _isExpanded[i] = !_isExpanded[i];
+              });
+            },
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              height: _isExpanded[i] ? 300 : 165,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Column(
+                children: [
                   Container(
                     margin: const EdgeInsets.only(left: 15, top: 15),
                     child: Row(
@@ -54,51 +56,50 @@ class _CancelledCardState extends State<CancelledCard> {
                             color: Colors.grey.shade400,
                             borderRadius: BorderRadius.circular(15),
                           ),
-                          child: Image.asset(
-                            "assets/images/lisa_avatar.jpg",
-                            width: 70,
-                            height: 70,
-                            fit: BoxFit.contain,
-                          ),
+                          // child: Image.asset(
+                          //   "dsadsada",
+                          //   width: 70,
+                          //   height: 70,
+                          //   fit: BoxFit.contain,
+                          // ),
                         ),
-                        Container(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  bookings[i].empName,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                bookings[i].empName,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                bookings[i].jobName,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Container(
+                                padding:
+                                    const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: const Text(
+                                  "Cancelled",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13,
                                   ),
                                 ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  bookings[i].jobName,
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                                  decoration: BoxDecoration(
-                                    color: Colors.redAccent,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Text(
-                                    "Cancelled",
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
+                              )
+                            ],
                           ),
                         )
                       ],
@@ -106,18 +107,18 @@ class _CancelledCardState extends State<CancelledCard> {
                   ),
                   const SizedBox(height: 5),
                   Container(
-                    padding: EdgeInsets.only(left: 15, right: 15),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
                     child: Divider(
                       thickness: 1,
                       color: Colors.grey[400],
                     ),
                   ),
                   Visibility(
-                    visible: _isExpanded,
+                    visible: _isExpanded[i],
                     child: Container(
-                      padding: EdgeInsets.only(left: 15, right: 15, top: 3),
+                      padding:
+                          const EdgeInsets.only(left: 15, right: 15, top: 3),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,15 +131,15 @@ class _CancelledCardState extends State<CancelledCard> {
                                 ),
                               ),
                               Text(
-                                DateFormat('yyyy-MM-dd – HH:mm')
+                                DateFormat('MMM d, yyyy | hh:mm aaa')
                                     .format(bookings[i].timestamp),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 15,
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 4),
+                          const SizedBox(height: 6),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -149,10 +150,84 @@ class _CancelledCardState extends State<CancelledCard> {
                                   color: Colors.grey.shade700,
                                 ),
                               ),
-                              Text(
-                                bookings[i].location,
-                                style: TextStyle(
-                                  fontSize: 15,
+                              Flexible(
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 40),
+                                  child: Text(
+                                    bookings[i].location,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
+                                    textAlign: TextAlign.right,
+                                    maxLines: 3,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 15),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width / 2.6,
+                                  height:
+                                      MediaQuery.of(context).size.height / 20,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    border: Border.all(
+                                        color: Colors.orange.shade400,
+                                        width: 2),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Cancel booking",
+                                      style: TextStyle(
+                                          color: Colors.orange.shade400,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) =>
+                                  //             OrderDetailsSreen(
+                                  //               order: orders[i],
+                                  //               orderDetails:
+                                  //                   orders[i].cartItems,
+                                  //             )));
+                                },
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width / 2.6,
+                                  height:
+                                      MediaQuery.of(context).size.height / 20,
+                                  decoration: BoxDecoration(
+                                    color: Colors.deepPurple.shade300,
+                                    borderRadius: BorderRadius.circular(50),
+                                    border: Border.all(
+                                        color: Colors.deepPurple.shade300,
+                                        width: 2),
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      "View Details",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
@@ -162,14 +237,14 @@ class _CancelledCardState extends State<CancelledCard> {
                       ),
                     ),
                   ),
-                  Icon(_isExpanded
+                  Icon(_isExpanded[i]
                       ? Icons.keyboard_arrow_up
                       : Icons.keyboard_arrow_down)
-                ])
-            ],
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+      ],
     );
   }
 

@@ -16,39 +16,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Service> services = [];
-  String? mtoken = " ";
-
+ 
   @override
   void initState() {
     super.initState();
-    requestPermission();
-    getToken();
     fetchServices();
-  }
-
-  void requestPermission() async {
-    FirebaseMessaging messaging = FirebaseMessaging.instance;
-
-    NotificationSettings settings = await messaging.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
-    );
-
-    print('User granted permission: ${settings.authorizationStatus}');
-  }
-
-  void getToken() async {
-    await FirebaseMessaging.instance.getToken().then((token) {
-      setState(() {
-        mtoken = token;
-        print("My token is $mtoken");
-      });
-    });
   }
 
   Future<void> fetchServices() async {
@@ -224,6 +196,4 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
-
-  
 }

@@ -4,8 +4,8 @@ import 'package:swd_project_clatt/Notification.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:swd_project_clatt/services/login_api.dart';
+import 'package:swd_project_clatt/user/components/screens.dart';
 import 'package:swd_project_clatt/user/pages/login_page.dart';
-import 'package:swd_project_clatt/user/pages/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +46,7 @@ class MyHomePage extends StatelessWidget {
         initialRoute: '/login',
         routes: {
           '/login': (context) => LoginPage(),
-          '/home': (context) => HomePage(),
+          '/screen': (context) => Screens(),
         },
       ),
     );
