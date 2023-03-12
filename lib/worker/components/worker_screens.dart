@@ -6,14 +6,14 @@ import 'package:swd_project_clatt/worker/pages/my_bookings_page.dart';
 import 'package:swd_project_clatt/worker/pages/notification_page.dart';
 import 'package:swd_project_clatt/worker/pages/profile_page.dart';
 
-class Screens extends StatefulWidget {
-  const Screens({super.key});
+class WorkerScreens extends StatefulWidget {
+  const WorkerScreens({super.key});
 
   @override
-  State<Screens> createState() => _ScreensState();
+  State<WorkerScreens> createState() => _WorkerScreensState();
 }
 
-class _ScreensState extends State<Screens> {
+class _WorkerScreensState extends State<WorkerScreens> {
   String? mtoken = " ";
   int _selectedIndex = 0;
 

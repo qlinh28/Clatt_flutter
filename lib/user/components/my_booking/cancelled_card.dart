@@ -170,31 +170,6 @@ class _CancelledCardState extends State<CancelledCard> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               InkWell(
-                                onTap: () {},
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width / 2.6,
-                                  height:
-                                      MediaQuery.of(context).size.height / 20,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    border: Border.all(
-                                        color: Colors.orange.shade400,
-                                        width: 2),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Cancel booking",
-                                      style: TextStyle(
-                                          color: Colors.orange.shade400,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          letterSpacing: 1),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
                                 onTap: () {
                                   // Navigator.push(
                                   //     context,

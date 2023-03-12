@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:swd_project_clatt/models/workers.dart';
 import 'package:swd_project_clatt/user/components/home/banner_slider.dart';
 import 'package:swd_project_clatt/models/services.dart';
-import 'package:swd_project_clatt/user/pages/workers_service_page.dart';
+
+import 'package:swd_project_clatt/worker/pages/service_details.dart';
 
 class HomePage extends StatelessWidget {
+  final Worker worker = new Worker(
+      id: 1,
+      name: "Linh",
+      image: "assets/images/lisa_avatar.jpg",
+      address: "Vinhome Grand Park",
+      introduce:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      price: 40);
   List<Service> services = [
     Service(
       id: 1,
@@ -119,7 +129,7 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Service",
+                    "Services you are serving",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
@@ -150,8 +160,8 @@ class HomePage extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => WorkerServiceScreen(
-                                      service: services[i])));
+                                  builder: (context) => ServiceDetailsScreen(
+                                      worker: worker, service: services[i])));
                         },
                         child: Container(
                           margin: const EdgeInsets.all(10),
