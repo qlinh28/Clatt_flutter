@@ -14,7 +14,7 @@ class CancelledCard extends StatefulWidget {
 
 class _CancelledCardState extends State<CancelledCard> {
   late List<bool> _isExpanded = List.filled(bookings.length, false);
-  List<Bookings> bookings = [];
+  List<Booking> bookings = [];
 
   @override
   void initState() {

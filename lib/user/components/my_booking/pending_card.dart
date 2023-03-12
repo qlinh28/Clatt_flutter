@@ -13,7 +13,7 @@ class PendingCard extends StatefulWidget {
 }
 
 class _PendingCardState extends State<PendingCard> {
-  List<Bookings> bookings = [];
+  List<Booking> bookings = [];
   late List<bool> _isExpanded = List.filled(bookings.length, false);
 
   void _reloadPage() {

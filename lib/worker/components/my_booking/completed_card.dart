@@ -10,7 +10,7 @@ class CompletedCard extends StatefulWidget {
 
 class _CompletedCardState extends State<CompletedCard> {
   late List<bool> _isExpanded = List.filled(bookings.length, false);
-  List<Bookings> bookings = [];
+  List<Booking> bookings = [];
 
   @override
   Widget build(BuildContext context) {

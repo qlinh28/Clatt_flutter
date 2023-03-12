@@ -1,8 +1,8 @@
-class Users {
+class User {
   int userID;
   String name, image, address;
 
-  Users({
+  User({
     required this.userID,
     required this.name,
     required this.image,

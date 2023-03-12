@@ -1,8 +1,8 @@
-class Bookings {
+class Booking {
   int id, userId, empId, jobId, workTime, price;
   String usename, empName, status, location, jobName, description, empPicture;
   DateTime timestamp;
-  Bookings({
+  Booking({
     required this.id,
     required this.userId,
     required this.usename,

@@ -1,7 +1,7 @@
-class Orders {
+class Order {
   String userID, location;
   DateTime date, time;
-  Orders({
+  Order({
     required this.userID,
     required this.date,
     required this.time,

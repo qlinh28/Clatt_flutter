@@ -23,7 +23,7 @@ class BookingApi {
     return body;
   }
 
-  static Future<List<Bookings>> fetchBooking(
+  static Future<List<Booking>> fetchBooking(
     int userId,
     String status,
   ) async {
@@ -34,7 +34,7 @@ class BookingApi {
     final json = jsonDecode(body);
     final users = json['data'] as List<dynamic>;
     final booking = await users.map((e) {
-      return Bookings(
+      return Booking(
         id: e['id'],
         userId: e['userId'],
         usename: e['userName'],

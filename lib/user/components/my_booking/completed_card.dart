@@ -13,7 +13,7 @@ class CompletedCard extends StatefulWidget {
 }
 
 class _CompletedCardState extends State<CompletedCard> {
-  List<Bookings> bookings = [];
+  List<Booking> bookings = [];
 
   late List<bool> _isExpanded = List.filled(bookings.length, false);
 
