@@ -1,4 +1,3 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:swd_project_clatt/services/list_services_api.dart';
@@ -16,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Service> services = [];
- 
+
   @override
   void initState() {
     super.initState();
@@ -32,7 +31,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final token = Provider.of<Auth>(context).token;
+    //final token = Provider.of<Auth>(context).token;
     return Consumer<Auth>(
       builder: (context, auth, child) {
         if (!auth.isLoggedIn) {
